@@ -6,22 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="tableManager.js"></script> -->
+
+    <style>
+        #dataTable {
+            position: relative;
+        }
+
+        #dataTable thead th {
+            color:  red;
+        }
+
+        #dataTable #body tr {
+            height: 50px;
+            display: block;
+            clear: both;
+            position: absolute;
+            transition-duration: 1s;
+        }
+
+       .rank {
+           width: 60px;
+       }
+
+       .name {
+           width: 200px;
+           text-align: left;
+       }
+
+       .name .container {
+           display: flex;
+           align-items: center;
+       }
+
+       .name img {
+           width: 20px;
+           height: 20px;
+           margin-right: 10px;
+       }
+
+       .price {
+           width: 150px;
+           text-align: left;
+       }
+
+       .volume_24h {
+           width: 180px;
+           text-align: left;
+       }
+
+       .percentage_change_24h {
+           width: 180px;
+           text-align: left;
+       }
+    </style>
+
 </head>
 <body>
-    <table>
-        <tr>
-            <td>Symbol</td>
-            <td>Cena</td>
-            <td>Volume (24h)</td>
-            <td>% Change (24h)</td>
-        </tr>
-        <tr class="BTCUSDT">
-            <td class="symbol"></td>
-            <td class="price"></td>
-            <td class="volume"></td>
-            <td class="change"></td>
-        </tr>
+    <p>następna aktualizacja za</p>
+    <input type="text" id="searchCoin">
+    <table class="tablemanager" id="dataTable" class="display" width="100%">
+        <thead>
+            <tr>
+                <th class="rank">Ranking</th>
+                <th class="name">Waluta</th>
+                <th class="price">Kurs</th>
+                <th class="volume_24h">24h</th>
+                <th class="percentage_change_24h">% Change (24h)</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+        </tbody>
     </table>
     <script src="app.js"></script>
 </body>
