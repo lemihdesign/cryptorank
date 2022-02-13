@@ -1,0 +1,45 @@
+header {
+    width: 100%;
+    min-height: 70vh;
+    background-image: url(../src/bg2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 30px;
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+        font-family: 'Roboto', sans-serif;
+
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        p {
+            color: #fff;
+            width: 100%;
+        }
+
+        p.timerP {
+            padding-top: 15px;
+        }
+
+        input {
+            width: 450px;
+            line-height: 40px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 3px 3px 13px 3px rgba($color: #000000, $alpha: 0.1);
+            margin-top: 50px;
+            padding-left: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+    }
+}

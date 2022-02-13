@@ -5,82 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <!-- <script src="tableManager.js"></script> -->
-
-    <style>
-        #dataTable {
-            position: relative;
-        }
-
-        #dataTable thead th {
-            color:  red;
-        }
-
-        #dataTable #body tr {
-            height: 50px;
-            display: block;
-            clear: both;
-            position: absolute;
-            transition-duration: 1s;
-        }
-
-       .rank {
-           width: 60px;
-       }
-
-       .name {
-           width: 200px;
-           text-align: left;
-       }
-
-       .name .container {
-           display: flex;
-           align-items: center;
-       }
-
-       .name img {
-           width: 20px;
-           height: 20px;
-           margin-right: 10px;
-       }
-
-       .price {
-           width: 150px;
-           text-align: left;
-       }
-
-       .volume_24h {
-           width: 180px;
-           text-align: left;
-       }
-
-       .percentage_change_24h {
-           width: 180px;
-           text-align: left;
-       }
-    </style>
 
 </head>
 <body>
-    <p>następna aktualizacja za</p>
-    <input type="text" id="searchCoin">
-    <table class="tablemanager" id="dataTable" class="display" width="100%">
-        <thead>
-            <tr>
-                <th class="rank">Ranking</th>
-                <th class="name">Waluta</th>
-                <th class="price">Kurs</th>
-                <th class="volume_24h">24h</th>
-                <th class="percentage_change_24h">% Change (24h)</th>
-            </tr>
-        </thead>
-        <tbody id="body">
-        </tbody>
-    </table>
-    <script src="app.js"></script>
+    <header>
+        <div class="container">
+            <h1>Cryptoranking</h1>
+            <p>Śledź aktualne ceny najpopularniejszych kryptowalut w łatwy sposób.</p>
+            <input type="text" id="searchCoin" placeholder="Wyszukaj kryptowalutę...">
+            <p class="timerP">Następna aktualizacja danych za <span class="counter"></span></p>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="container">
+            <table class="table is-narrow is-hoverable sort" id="dataTable">
+                <thead>
+                    <tr>
+                        <th class="rank" data-column="rank" data-order="desc">#</th>
+                        <th class="name" data-column="name" data-order="desc">Waluta</th>
+                        <th class="price" data-column="price" data-order="desc">Kurs</th>
+                        <th class="percentage_change_24h" data-column="percentage_change_24h" data-order="desc">24h</th>
+                        <th class="total_volume" data-column="total_volume" data-order="desc">Wolumen - 24godz.</th>
+                        <th class="market_cap" data-column="market_cap" data-order="desc">Kapitalizacja rynkowa</th>
+                    </tr>
+                </thead>
+                <tbody id="body"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
 </body>
 </html>

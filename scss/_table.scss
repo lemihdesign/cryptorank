@@ -1,0 +1,60 @@
+.table {
+    position: relative;
+    margin-top: -100px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 3px 3px 13px 3px rgba($color: #000000, $alpha: 0.1);
+    border-radius: 20px 20px 0 0;
+    text-align: left;
+
+    thead {
+        tr {
+            line-height: 50px;
+        }
+    }
+
+    .rank {
+        width: 60px;
+    }
+
+    .name {
+        width: 250px;
+        text-align: left;
+
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            img {
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .price {
+        width: 200px;
+    }
+
+    .total_volume {
+        width: 250px;
+    }
+
+    .percentage_change_24h {
+        width: 150px;
+    }
+
+    tbody {
+
+        tr {
+            background-color: #fff;
+            line-height: 50px;
+
+            .name {
+                width: 200px;
+            }
+        }
+
+    }
+}

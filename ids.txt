@@ -1,0 +1,9 @@
+market_cap - kapitalizacja rynkowa
+total_volume - wolumen (24h)
+
+aktualizacja pozostalych kolumn (getUpdatedData)
+liczba wierszy do wyboru
+wybor waluty (jakies podstawowe usd, eur, pln itp)
+
+**jak sie uda to kolorowanie liczb w zaleznosci od tego czy rosna czy maleja
+**jak sie uda to paginacja
