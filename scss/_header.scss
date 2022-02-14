@@ -29,15 +29,43 @@ header {
             padding-top: 15px;
         }
 
-        input {
+        .searchBar {
+            position: relative;
             width: 450px;
-            line-height: 40px;
-            border-radius: 10px;
-            border: none;
-            box-shadow: 3px 3px 13px 3px rgba($color: #000000, $alpha: 0.1);
+            height: 40px;
             margin-top: 50px;
-            padding-left: 10px;
-            font-family: 'Roboto', sans-serif;
+
+            input {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                border: none;
+                box-shadow: 3px 3px 13px 3px rgba($color: #000000, $alpha: 0.1);
+                padding-left: 10px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            span {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 0 10px 10px 0;
+                border: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+                i {
+                    font-size: 20px;
+                    color: #333;
+                }
+            }
+        }
+
+        .searchBar:focus {
+            border: none;
         }
 
         .wrapper {
