@@ -62,6 +62,27 @@ header {
                 cursor: pointer;
             }
 
+            span.rowSelect {
+                position: absolute;
+                bottom: 10px;
+                left: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px 15px;
+                background-color: #fff;
+                color: #333;
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                border-radius: 10px;
+                border: 1px solid rgba($color: #000000, $alpha: 0.1);
+                cursor: pointer;
+
+                span {
+                    font-weight: 800;
+                }
+            }
+
             .currenciesList {
                 position: absolute;
                 z-index: 2;
@@ -82,6 +103,11 @@ header {
                     display: flex;
                     justify-content: flex-end;
 
+                    p {
+                        font-family: 'Roboto', sans-serif;
+                        color: #333;
+                    }
+
                     i {
                         font-size: 22px;
                         color: #333;
@@ -90,6 +116,8 @@ header {
                 }
 
                 ul {
+                    padding-top: 10px;
+
                     li {
                         line-height: 30px;
                         cursor: pointer;
@@ -106,6 +134,59 @@ header {
             }
 
             .currenciesList.active {
+                display: block;
+            }
+
+            .rowList {
+                position: absolute;
+                z-index: 2;
+                width: 250px;
+                height: 236px;
+                display: none;
+                background-color: #fff;
+                border: 1px solid rgba($color: #000000, $alpha: 0.1);
+                border-radius: 20px 0 0 0;
+                bottom: -236px;
+                left: -2px;
+                z-index: 2;
+                padding: 15px;
+
+                .controlBar {
+                    width: 100%;
+                    height: 20px;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    p {
+                        font-family: 'Roboto', sans-serif;
+                        color: #333;
+                    }
+
+                    i {
+                        font-size: 22px;
+                        color: #333;
+                        cursor: pointer;
+                    }
+                }
+
+                ul {
+                    padding-top: 10px;
+
+                    li {
+                        line-height: 30px;
+                        cursor: pointer;
+                        font-family: 'Roboto', sans-serif;
+                        color: #333;
+                        font-size: 13px;
+
+                        span {
+                            color: rgb(150, 150, 150);
+                        }
+                    }
+                }
+            }
+
+            .rowList.active {
                 display: block;
             }
         }

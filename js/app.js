@@ -2,11 +2,13 @@ const request = new XMLHttpRequest();
 let currency = 'PLN';
 request.open('GET', 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=' + currency.toLowerCase(), false);
 request.send(null);
-
 let data = JSON.parse(request.responseText);
+
 let cryptocurrencies;
 let timerID;
 const updateInterval = 30000;
+let rows = 10;
+
 
 /* function descending(a, b) {
     return a.price < b.price ? 1 : -1;
@@ -113,7 +115,7 @@ function getData() {
     }
 
     cryptocurrencies = [];
-    for(let i=0; i<100; i++) {
+    for(let i=0; i<rows; i++) {
         cryptocurrencies.push({
             name: data[i].name,
             image: data[i].image,
@@ -187,6 +189,28 @@ currencies.forEach(element => {
     })
 });
 
+/* Close sorting tabs */
 $('.fa-solid').on('click', function() {
-    $('.currenciesList').toggleClass('active');
+    if($('.currenciesList').hasClass('active')) {
+        $('.currenciesList').removeClass('active');
+    }
+    if($('.rowList').hasClass('active')) {
+        $('.rowList').removeClass('active');
+    }
 })
+
+/* Number of rows in table */
+$('.rowSelect').on('click', function() {
+    $('.rowList').toggleClass('active');
+})
+
+const rowOptions = document.querySelectorAll('.rowOptions li');
+rowOptions.forEach(element => {
+    element.addEventListener('click', function() {
+        let selectedOption = element.getAttribute('data-value');
+        rows = parseInt(selectedOption, 10);
+        getData(); 
+        $('.rowList').toggleClass('active');
+        $('.rowSelect span').text(" " + rows);
+    })
+});
