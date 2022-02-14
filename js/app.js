@@ -83,7 +83,7 @@ function comparePrices() {
 
 function getUpdatedData() {
     const newRequest = new XMLHttpRequest();
-    newRequest.open('GET', 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=' + currency, false);
+    newRequest.open('GET', 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=' + currency.toLowerCase(), false);
     newRequest.send(null);
     
     let newData = JSON.parse(newRequest.responseText);
@@ -92,7 +92,11 @@ function getUpdatedData() {
         let cryptocurrency = cryptocurrencies[i];
         
         cryptocurrency.price = fetchNewData(newData, 'current_price', cryptocurrency.name);
+        cryptocurrency.market_cap = fetchNewData(newData, 'market_cap', cryptocurrency.name);
+        cryptocurrency.total_volume = fetchNewData(newData, 'total_volume', cryptocurrency.name);
         cryptocurrency.$item.find(".price").text(parseFloat(cryptocurrency.price.toFixed(2)).toLocaleString() + " " + currency);
+        cryptocurrency.$item.find(".total_volume").text(parseFloat(cryptocurrency.total_volume).toLocaleString() + " " + currency);
+        cryptocurrency.$item.find(".market_cap").text(parseFloat(cryptocurrency.market_cap).toLocaleString() + " " + currency);
     }
 
     //cryptocurrencies.sort(descending);
@@ -131,7 +135,7 @@ function getData() {
                 "<td class='market_cap'>" + cryptocurrencies[i].market_cap.toLocaleString() + " " + currency + "</td>" +
             "</tr>" 
         );
-        let currentPrice = cryptocurrencies[i].price.toFixed(2);
+        let currentPrice = cryptocurrencies[i].price.toFixed(9);
         cryptocurrencies[i].$item = $item;
         $currencyList.append($item);
     }
@@ -166,3 +170,23 @@ let timer = setInterval(function() {
     }
     timeLeft--;
 }, 1000)
+
+/* Currency list */
+$('.currencySelect').on('click', function() {
+    $('.currenciesList').toggleClass('active');
+})
+
+const currencies = document.querySelectorAll('.currenciesSymbols li');
+currencies.forEach(element => {
+    element.addEventListener('click', function() {
+        let symbol = element.getAttribute('data-value');
+        currency = symbol;
+        getUpdatedData();
+        $('.currenciesList').toggleClass('active');
+        $('.currencySelect').text(currency);
+    })
+});
+
+$('.fa-solid').on('click', function() {
+    $('.currenciesList').toggleClass('active');
+})
