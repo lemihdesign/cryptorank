@@ -6,6 +6,7 @@ let data = JSON.parse(request.responseText);
 
 let cryptocurrencies;
 let timerID;
+let dateID;
 const updateInterval = 30000;
 let rows = 10;
 
@@ -83,6 +84,39 @@ function comparePrices() {
     }
 }
 
+function changeDate() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = (today.getMonth()+1);
+    let day = today.getDate();
+    let hour = today.getHours();
+    let minute = today.getMinutes();
+    let second = today.getSeconds();
+
+    if(month < 10) {
+        month = '0' + (today.getMonth()+1);
+    }
+    
+    if(day < 10) {
+        day = '0' + today.getDate();
+    }
+
+    if(hour < 10) {
+        hour = '0' + today.getHours();
+    }
+
+    if(minute < 10) {
+        minute = '0' + today.getMinutes();
+    }
+
+    if(second < 10) {
+        second = '0' + today.getSeconds();
+    }
+
+    let date = year + '-' + month + '-' + day + ', godz. ' + hour + ':' + minute + ':' + second;
+    document.querySelector('span.dateContainer').innerHTML = date;
+}
+
 function getUpdatedData() {
     const newRequest = new XMLHttpRequest();
     newRequest.open('GET', 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=' + currency.toLowerCase(), false);
@@ -91,14 +125,15 @@ function getUpdatedData() {
     let newData = JSON.parse(newRequest.responseText);
 
     for(let i=0; i<cryptocurrencies.length; i++) {
-        let cryptocurrency = cryptocurrencies[i];
-        
-        cryptocurrency.price = fetchNewData(newData, 'current_price', cryptocurrency.name);
+        cryptocurrency = cryptocurrencies[i];
+
+        updatedPrice = cryptocurrency.price = fetchNewData(newData, 'current_price', cryptocurrency.name);
         cryptocurrency.market_cap = fetchNewData(newData, 'market_cap', cryptocurrency.name);
         cryptocurrency.total_volume = fetchNewData(newData, 'total_volume', cryptocurrency.name);
+
         cryptocurrency.$item.find(".price").text(parseFloat(cryptocurrency.price.toFixed(2)).toLocaleString() + " " + currency);
         cryptocurrency.$item.find(".total_volume").text(parseFloat(cryptocurrency.total_volume).toLocaleString() + " " + currency);
-        cryptocurrency.$item.find(".market_cap").text(parseFloat(cryptocurrency.market_cap).toLocaleString() + " " + currency);
+        cryptocurrency.$item.find(".market_cap").text(parseFloat(cryptocurrency.market_cap).toLocaleString() + " " + currency);  
     }
 
     //cryptocurrencies.sort(descending);
@@ -137,7 +172,7 @@ function getData() {
                 "<td class='market_cap'>" + cryptocurrencies[i].market_cap.toLocaleString() + " " + currency + "</td>" +
             "</tr>" 
         );
-        let currentPrice = cryptocurrencies[i].price.toFixed(9);
+        price = cryptocurrencies[i].price;
         cryptocurrencies[i].$item = $item;
         $currencyList.append($item);
     }
@@ -146,6 +181,8 @@ function getData() {
     //updateRank(cryptocurrencies);
     //reposition();
     timerID = setInterval("getUpdatedData();", updateInterval);
+    dateID = setInterval("changeDate();", updateInterval);
+
 }
 
 getData();
@@ -173,6 +210,7 @@ let timer = setInterval(function() {
     timeLeft--;
 }, 1000)
 
+
 /* Currency list */
 $('.currencySelect').on('click', function() {
     $('.currenciesList').toggleClass('active');
@@ -186,6 +224,11 @@ currencies.forEach(element => {
         getUpdatedData();
         $('.currenciesList').toggleClass('active');
         $('.currencySelect').text(currency);
+        $('.currencyIcon').toggleClass('active');
+
+        if($('.rowList').hasClass('active')) {
+            $('.rowList').removeClass('active');
+        }
     })
 });
 
@@ -202,6 +245,9 @@ $('.fa-solid').on('click', function() {
 /* Number of rows in table */
 $('.rowSelect').on('click', function() {
     $('.rowList').toggleClass('active');
+    if($('.currenciesList').hasClass('active')) {
+        $('.currenciesList').removeClass('active');
+    }
 })
 
 const rowOptions = document.querySelectorAll('.rowOptions li');
@@ -214,3 +260,22 @@ rowOptions.forEach(element => {
         $('.rowSelect span').text(" " + rows);
     })
 });
+
+/* Slider */
+const images = ['/src/bg2RR.jpg', '/src/bg444.jpg', '/src/bg55.jpg'];
+const siteDescriptions = ['Śledź aktualne ceny najpopularniejszych kryptowalut w łatwy sposób.', 'Wybieraj spośród kilku dostępnych walut dzięki opcji filtracji danych.', 'Wyszukuj interesujące Cię kryptowaluty w wyszukiwarce i śledź ich aktualne kursy.'];
+const header = document.querySelector('header');
+const siteDescription = document.querySelector('.siteDescription');
+slideTimer = 10000;
+let activeElement = 0;
+
+function changeSlide() {
+    activeElement++;
+    if(activeElement > images.length - 1) {
+        activeElement = 0;
+    }
+    header.style.backgroundImage = "url('" + images[activeElement] + "')";
+    siteDescription.innerHTML = siteDescriptions[activeElement];
+}
+
+setInterval(changeSlide, slideTimer);

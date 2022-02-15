@@ -1,9 +1,29 @@
 market_cap - kapitalizacja rynkowa
 total_volume - wolumen (24h)
 
-aktualizacja pozostalych kolumn (getUpdatedData)
-liczba wierszy do wyboru
-wybor waluty (jakies podstawowe usd, eur, pln itp)
++aktualizacja pozostalych kolumn (getUpdatedData)
++liczba wierszy do wyboru
++wybor waluty (jakies podstawowe usd, eur, pln itp)
+slider (zmiana zdjecia + zmiana napisow typu wybieraj sposrod kilku dostepnych walut, wyszukuj interesujace cie kryptowaluty, sortuj itp)
+ikony przy filtrach (strzalki w dol do rozwijania)
 
 **jak sie uda to kolorowanie liczb w zaleznosci od tego czy rosna czy maleja
 **jak sie uda to paginacja
+
+waluty:
+USD - US Dollar
+EUR - Euro
+PLN - Polish złoty
+GBP - British Pound Sterling
+CZK - Czech Korona
+UAH - Ukrainian hryvnia
+DKK - Danish Krone
+SEK - Swedish Krona
+NOK - Norwegian Krone
+RUB - Russian Ruble
+KRW - South Korean Won
+CNY - Chinese Yuan
+AED - United Arab Emirates Dirham
+NZD - New Zealand Dollar
+HKD - Hong Kong Dollar
+AUD - Australian Dollar

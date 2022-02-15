@@ -1,31 +1,40 @@
 header {
     width: 100%;
     min-height: 70vh;
-    background-image: url(../src/bg2.jpg);
+    background-image: url(../src/bg2RR.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
-    padding-top: 30px;
+    padding-top: 40px;
+    box-shadow: 3px 3px 10px 3px rgba($color: #000000, $alpha: 0.4);
 
-    .container {
+    .containerHeader {
         position: relative;
-        width: 100%;
+        margin: 0 auto;
+        width: 95%;
         height: calc(70vh - 30px);
-        // padding: 30px;
+        padding-top: 40px;
         font-family: 'Roboto', sans-serif;
 
         h1 {
             font-size: 64px;
             font-weight: 800;
             color: #fff;
+            text-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
         }
 
         p {
             color: #fff;
             width: 100%;
+            text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
         }
 
         p.timerP {
+            text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
+        }
+
+        p.timerD {
+            font-size: 12px;
             padding-top: 15px;
         }
 
@@ -71,12 +80,13 @@ header {
         .wrapper {
             position: relative;
             width: 1090px;
-            height: 193px;
+            height: 100%;
             margin: 0 auto;
+            margin-top: -250px;
 
             span.currencySelect {
                 position: absolute;
-                bottom: 10px;
+                bottom: 90px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -88,12 +98,24 @@ header {
                 border-radius: 10px;
                 border: 1px solid rgba($color: #000000, $alpha: 0.1);
                 cursor: pointer;
+
+                .currencyIcon {
+                    i {
+                        color: #333;
+                        margin-left: 15px;
+                    }
+
+                    i.active {
+                        color: red;
+                        transform: rotate(180deg);
+                    }
+                }
             }
 
             span.rowSelect {
                 position: absolute;
-                bottom: 10px;
-                left: 80px;
+                bottom: 90px;
+                left: 100px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -105,6 +127,18 @@ header {
                 border-radius: 10px;
                 border: 1px solid rgba($color: #000000, $alpha: 0.1);
                 cursor: pointer;
+
+                .rowIcon {
+                    i {
+                        color: #333;
+                        margin-left: 15px;
+                    }
+
+                    i.active {
+                        color: red;
+                        transform: rotate(180deg);
+                    }
+                }
 
                 span {
                     font-weight: 800;
@@ -120,8 +154,8 @@ header {
                 background-color: #fff;
                 border: 1px solid rgba($color: #000000, $alpha: 0.1);
                 border-radius: 20px 0 0 0;
-                bottom: -532px;
-                left: -2px;
+                bottom: -457px;
+                left: -1px;
                 z-index: 2;
                 padding: 15px;
 
@@ -174,8 +208,8 @@ header {
                 background-color: #fff;
                 border: 1px solid rgba($color: #000000, $alpha: 0.1);
                 border-radius: 20px 0 0 0;
-                bottom: -236px;
-                left: -2px;
+                bottom: -161px;
+                left: -1px;
                 z-index: 2;
                 padding: 15px;
 
