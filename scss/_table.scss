@@ -41,6 +41,10 @@
         width: 250px;
     }
 
+    .market_cap {
+        width: 250px;
+    }
+
     .percentage_change_24h {
         width: 150px;
     }
@@ -79,6 +83,27 @@
 
             td.price.equal {
                 color: black;
+            }
+
+            .total_volume {
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin-left: 10px;
+                }
+            }
+
+            .market_cap {
+
+                .marketCapContainer {
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        margin-left: 10px;
+                    }
+                }
             }
         }
 

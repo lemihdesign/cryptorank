@@ -118,29 +118,47 @@ function getUpdatedData() {
     newRequest.send(null);
     
     let newData = JSON.parse(newRequest.responseText);
-    let priceA;
+    let lastPrice;
+    let lastTotalVolume;
+    let lastMarketCap;
 
     for(let i=0; i<cryptocurrencies.length; i++) {
-        priceA = cryptocurrencies[i].price;
+        lastPrice = cryptocurrencies[i].price;
+        lastTotalVolume = cryptocurrencies[i].total_volume;
+        lastMarketCap = cryptocurrencies[i].market_cap;
         cryptocurrency = cryptocurrencies[i];
 
-        updatedPrice = cryptocurrency.price = fetchNewData(newData, 'current_price', cryptocurrency.name);
+        cryptocurrency.price = fetchNewData(newData, 'current_price', cryptocurrency.name);
         cryptocurrency.market_cap = fetchNewData(newData, 'market_cap', cryptocurrency.name);
         cryptocurrency.total_volume = fetchNewData(newData, 'total_volume', cryptocurrency.name);
 
-        cryptocurrency.$item.find(".price").html(parseFloat(cryptocurrency.price.toFixed(2)).toLocaleString() + " " + currency + "<span class='arrowUp'><i class='fa-solid fa-caret-up'></i></span>" + "<span class='arrowDown'><i class='fa-solid fa-caret-down'></i></span>");
-        cryptocurrency.$item.find(".total_volume").text(parseFloat(cryptocurrency.total_volume).toLocaleString() + " " + currency);
-        cryptocurrency.$item.find(".market_cap").text(parseFloat(cryptocurrency.market_cap).toLocaleString() + " " + currency);  
+        cryptocurrency.$item.find(".price").html(parseFloat(cryptocurrency.price.toFixed(2)).toLocaleString() + " " + currency + "<span class='priceArrowUp'><i class='fa-solid fa-caret-up'></i></span>" + "<span class='priceArrowDown'><i class='fa-solid fa-caret-down'></i></span>");
+        cryptocurrency.$item.find(".total_volume").html(parseFloat(cryptocurrency.total_volume).toLocaleString() + " " + currency + "<span class='volumeArrowUp'><i class='fa-solid fa-caret-up'></i></span>" + "<span class='volumeArrowDown'><i class='fa-solid fa-caret-down'></i></span>");
+        cryptocurrency.$item.find(".market_cap").html("<div class='marketCapContainer'>" + parseFloat(cryptocurrency.market_cap).toLocaleString() + " " + currency + "<span class='marketArrowUp'><i class='fa-solid fa-caret-up'></i></span>" + "<span class='marketArrowDown'><i class='fa-solid fa-caret-down'></i></span></div>");  
         
         
-        let priceAU = cryptocurrencies[i].price;
-        let td = document.querySelectorAll('td.price');
-        let arrowUp = document.querySelectorAll('td.price .arrowUp');
-        let arrowDown = document.querySelectorAll('td.price .arrowDown');
+        let updatedPrice = cryptocurrencies[i].price;
+        let updatedTotalVolume = cryptocurrencies[i].total_volume;
+        let updatedMarketCap = cryptocurrencies[i].market_cap;
+        let priceTd = document.querySelectorAll('td.price');
+        let totalVolumeTd = document.querySelectorAll('td.total_volume');
+        let marketCapTd = document.querySelectorAll('td.market_cap');
+        let priceArrowUp = document.querySelectorAll('td .priceArrowUp');
+        let volumeArrowUp = document.querySelectorAll('td .volumeArrowUp');
+        let marketArrowUp = document.querySelectorAll('td .marketArrowUp');
+        let priceArrowDown = document.querySelectorAll('td .priceArrowDown');
+        let volumeArrowDown = document.querySelectorAll('td .volumeArrowDown');
+        let marketArrowDown = document.querySelectorAll('td .marketArrowDown');
         
-        td[i].style.color = !priceA || priceA === priceAU ? 'black' : priceAU > priceA  ? 'green' : 'red'; 
-        arrowUp[i].style.display = !priceA || priceA === priceAU ? 'none' : priceAU > priceA  ? 'block' : 'none';
-        arrowDown[i].style.display = !priceA || priceA === priceAU ? 'none' : priceAU > priceA  ? 'none' : 'block';
+        priceTd[i].style.color = !lastPrice || lastPrice === updatedPrice ? 'black' : updatedPrice > lastPrice  ? 'green' : 'red'; 
+        totalVolumeTd[i].style.color = !lastTotalVolume || lastTotalVolume === updatedTotalVolume ? 'black' : updatedTotalVolume > lastTotalVolume  ? 'green' : 'red'; 
+        marketCapTd[i].style.color = !lastMarketCap || lastMarketCap === updatedMarketCap ? 'black' : updatedMarketCap > lastMarketCap  ? 'green' : 'red'; 
+        priceArrowUp[i].style.display = !lastPrice || lastPrice === updatedPrice ? 'none' : updatedPrice > lastPrice  ? 'block' : 'none';
+        volumeArrowUp[i].style.display = !lastTotalVolume || lastTotalVolume === updatedTotalVolume ? 'none' : updatedTotalVolume > lastTotalVolume  ? 'block' : 'none';
+        marketArrowUp[i].style.display = !lastMarketCap || lastMarketCap === updatedMarketCap ? 'none' : updatedMarketCap > lastMarketCap  ? 'block' : 'none';
+        priceArrowDown[i].style.display = !lastPrice || lastPrice === updatedPrice ? 'none' : updatedPrice > lastPrice  ? 'none' : 'block';
+        volumeArrowDown[i].style.display = !lastTotalVolume || lastTotalVolume === updatedTotalVolume ? 'none' : updatedTotalVolume > lastTotalVolume  ? 'none' : 'block';
+        marketArrowDown[i].style.display = !lastMarketCap || lastMarketCap === updatedMarketCap ? 'none' : updatedMarketCap > lastMarketCap  ? 'none' : 'block';
     }
 }
 
