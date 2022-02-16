@@ -51,8 +51,34 @@
             background-color: #fff;
             line-height: 50px;
 
+            td {
+                font-weight: 500;
+            }
+
             .name {
                 width: 200px;
+            }
+
+            td.price {
+                display: flex;
+                align-items: center;
+                color: black;
+
+                span {
+                    margin-left: 10px;
+                }
+            }
+
+            td.price.green {
+                color: green;
+            }
+
+            td.price.red {
+                color: red;
+            }
+
+            td.price.equal {
+                color: black;
             }
         }
 

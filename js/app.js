@@ -9,7 +9,8 @@ let timerID;
 let dateID;
 const updateInterval = 30000;
 let rows = 10;
-
+let previousPrice;
+let updatedPrice;
 
 /* function descending(a, b) {
     return a.price < b.price ? 1 : -1;
@@ -78,12 +79,6 @@ function fetchNewData(data, attrName, name) {
     return null;
 }
 
-function comparePrices() {
-    if(newPrice > currentPrice) {
-        
-    }
-}
-
 function changeDate() {
     let today = new Date();
     let year = today.getFullYear();
@@ -123,22 +118,30 @@ function getUpdatedData() {
     newRequest.send(null);
     
     let newData = JSON.parse(newRequest.responseText);
+    let priceA;
 
     for(let i=0; i<cryptocurrencies.length; i++) {
+        priceA = cryptocurrencies[i].price;
         cryptocurrency = cryptocurrencies[i];
 
         updatedPrice = cryptocurrency.price = fetchNewData(newData, 'current_price', cryptocurrency.name);
         cryptocurrency.market_cap = fetchNewData(newData, 'market_cap', cryptocurrency.name);
         cryptocurrency.total_volume = fetchNewData(newData, 'total_volume', cryptocurrency.name);
 
-        cryptocurrency.$item.find(".price").text(parseFloat(cryptocurrency.price.toFixed(2)).toLocaleString() + " " + currency);
+        cryptocurrency.$item.find(".price").html(parseFloat(cryptocurrency.price.toFixed(2)).toLocaleString() + " " + currency + "<span class='arrowUp'><i class='fa-solid fa-caret-up'></i></span>" + "<span class='arrowDown'><i class='fa-solid fa-caret-down'></i></span>");
         cryptocurrency.$item.find(".total_volume").text(parseFloat(cryptocurrency.total_volume).toLocaleString() + " " + currency);
         cryptocurrency.$item.find(".market_cap").text(parseFloat(cryptocurrency.market_cap).toLocaleString() + " " + currency);  
+        
+        
+        let priceAU = cryptocurrencies[i].price;
+        let td = document.querySelectorAll('td.price');
+        let arrowUp = document.querySelectorAll('td.price .arrowUp');
+        let arrowDown = document.querySelectorAll('td.price .arrowDown');
+        
+        td[i].style.color = !priceA || priceA === priceAU ? 'black' : priceAU > priceA  ? 'green' : 'red'; 
+        arrowUp[i].style.display = !priceA || priceA === priceAU ? 'none' : priceAU > priceA  ? 'block' : 'none';
+        arrowDown[i].style.display = !priceA || priceA === priceAU ? 'none' : priceAU > priceA  ? 'none' : 'block';
     }
-
-    //cryptocurrencies.sort(descending);
-    //updateRank(cryptocurrencies);
-    //reposition();
 }
 
 function getData() {
@@ -172,6 +175,7 @@ function getData() {
                 "<td class='market_cap'>" + cryptocurrencies[i].market_cap.toLocaleString() + " " + currency + "</td>" +
             "</tr>" 
         );
+        
         price = cryptocurrencies[i].price;
         cryptocurrencies[i].$item = $item;
         $currencyList.append($item);
