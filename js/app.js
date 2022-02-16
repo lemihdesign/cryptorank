@@ -218,9 +218,6 @@ $(document).ready(function() {
     })
 })
 
-
-/* Sort table */
-
 /* Counter */
 let timeLeft = 30;
 let timer = setInterval(function() {
@@ -245,7 +242,7 @@ currencies.forEach(element => {
         currency = symbol;
         getUpdatedData();
         $('.currenciesList').toggleClass('active');
-        $('.currencySelect').text(currency);
+        $('.currencySelect span.activeCurrency').text(currency);
         $('.currencyIcon').toggleClass('active');
 
         if($('.rowList').hasClass('active')) {
@@ -279,7 +276,7 @@ rowOptions.forEach(element => {
         rows = parseInt(selectedOption, 10);
         getData(); 
         $('.rowList').toggleClass('active');
-        $('.rowSelect span').text(" " + rows);
+        $('.rowSelect span.numOfRows').text(" " + rows);
     })
 });
 
