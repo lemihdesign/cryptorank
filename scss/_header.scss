@@ -40,18 +40,28 @@ header {
 
         .searchBar {
             position: relative;
+            z-index: 5;
             width: 450px;
             height: 40px;
             margin-top: 50px;
 
             input {
-                width: 100%;
+                // position: relative;
+                width: 450px;
                 height: 100%;
                 border-radius: 10px;
                 border: none;
                 box-shadow: 3px 3px 13px 3px rgba($color: #000000, $alpha: 0.1);
                 padding-left: 10px;
                 font-family: 'Roboto', sans-serif;
+            }
+
+            input.btn {
+                -webkit-user-select: initial;
+                -khtml-user-select: initial;
+                -moz-user-select: initial;
+                -ms-user-select: initial;
+                user-select: initial;
             }
 
             span {
@@ -71,10 +81,6 @@ header {
                     color: #333;
                 }
             }
-        }
-
-        .searchBar:focus {
-            border: none;
         }
 
         .wrapper {
@@ -250,6 +256,116 @@ header {
 
             .rowList.active {
                 display: block;
+            }
+        }
+    }
+}
+
+@media(min-width: 2400px) {
+    header {
+        .containerHeader {
+            h1 {
+                font-size: 128px;
+            }
+
+            p {
+                font-size: 28px;
+            }
+
+            .searchBar {
+                width: 800px;
+                height: 60px;
+
+                input {
+                    width: 800px;
+                    font-size: 22px;
+                }
+
+                span {
+                    width: 60px;
+                    height: 60px;
+
+                    i {
+                        font-size: 30px;
+                    }
+                }
+            }
+
+            p.timerD {
+                font-size: 20px;
+                padding-top: 15px;
+            }
+
+            .wrapper {
+                margin-top: -510px;
+                width: 1350px;
+
+                span.currencySelect {
+                    bottom: 0;
+                    width: 100px;
+                    height: 50px;
+                    font-size: 22px;
+                }
+
+                span.rowSelect {
+                    bottom: 0;
+                    left: 120px;
+                    width: 290px;
+                    height: 50px;
+                    font-size: 22px;
+                }
+
+                .currenciesList {
+                    width: 490px;
+                    height: 1032px;
+                    bottom: -1054px;
+
+                    .controlBar {
+                        align-items: center;
+                        padding-top: 15px;
+
+                        i {
+                            font-size: 24px;
+                        }
+                    }
+
+                    ul {
+                        li {
+                            font-size: 24px;
+                            line-height: 60px;
+                        }
+
+                        li:nth-child(1) {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+
+                .rowList {
+                    width: 250px;
+                    height: 436px;
+                    bottom: -458px;
+
+                    .controlBar {
+                        align-items: center;
+                        padding-top: 15px;
+
+                        i {
+                            font-size: 22px;
+                        }
+                    }
+
+                    ul {
+                        li {
+                            font-size: 24px;
+                            line-height: 60px;
+                        }
+
+                        li:nth-child(1) {
+                            margin-top: 20px;
+                        }
+                    }
+                }
             }
         }
     }

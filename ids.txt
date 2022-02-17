@@ -6,8 +6,10 @@ total_volume - wolumen (24h)
 +wybor waluty (jakies podstawowe usd, eur, pln itp)
 +slider (zmiana zdjecia + zmiana napisow typu wybieraj sposrod kilku dostepnych walut, wyszukuj interesujace cie kryptowaluty, sortuj itp)
 +ikony przy filtrach (strzalki w dol do rozwijania)
+stopka
+responsywnosc
 
-**jak sie uda to kolorowanie liczb w zaleznosci od tego czy rosna czy maleja
++**jak sie uda to kolorowanie liczb w zaleznosci od tego czy rosna czy maleja
 **jak sie uda to paginacja
 
 waluty:
@@ -30,6 +32,6 @@ AUD - Australian Dollar
 
 
 Błędy:
-ostatni wiersz zla waluta (100 wierszy)
-span liczba wierszy - podwojna liczba
-w spanach z filtrow znikaja strzalki po wybraniu innych opcji
++ostatni wiersz zla waluta (100 wierszy)
++span liczba wierszy - podwojna liczba
++w spanach z filtrow znikaja strzalki po wybraniu innych opcji

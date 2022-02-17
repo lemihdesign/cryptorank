@@ -1,0 +1,57 @@
+@media(max-width: 768px) {
+    header {
+        .containerHeader {
+            padding-top: 20px;
+
+            h1 {
+                font-size: 42px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+
+            .searchBar {
+                width: 100%;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            .wrapper {
+                width: 100%;
+
+                span.currencySelect {
+                    bottom: 10px;
+                }
+
+                span.rowSelect {
+                    bottom: 10px;
+                }
+
+                .currenciesList {
+                    width: 100%;
+                    bottom: -537px;
+                    left: -10px;
+                    border-radius: 0;
+
+                    p {
+                        text-shadow: none;
+                    }
+                }
+
+                .rowList {
+                    width: 100%;
+                    bottom: -242px;
+                    left: -10px;
+                    border-radius: 0;
+
+                    p {
+                        text-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}

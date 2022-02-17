@@ -1,0 +1,11 @@
+@media(max-width: 768px) {
+    .wrapper {
+        width: 100%;
+        margin: 0;
+
+        .container {
+            overflow-x: scroll;
+            justify-content: flex-start;
+        }
+    }
+}

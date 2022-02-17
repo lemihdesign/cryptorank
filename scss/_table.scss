@@ -109,3 +109,83 @@
 
     }
 }
+
+@media(min-width: 2400px) {
+    .table {
+        thead {
+            tr {
+                line-height: 80px;
+
+                th {
+                    font-size: 24px;
+                }
+
+                .rank {
+                    width: 80px;
+                    padding: 5px;
+                }
+
+                .name {
+                    width: 350px;
+                }
+
+                .price {
+                    width: 300px;
+                }
+
+                .percentage_change_24h {
+                    width: 100px;
+                }
+
+                .total_volume {
+                    width: 350px;
+                }
+
+                .market_cap {
+                    width: 350px;
+                }
+            }
+        }
+
+        tbody {
+            width: 100%;
+            font-size: 22px;
+
+            tr {
+                line-height: 80px;
+            }
+        }
+
+        .rank {
+            width: 80px;
+            padding: 5px;
+        }
+
+        .name {
+            width: 350px;
+
+            .container {
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        .price {
+            width: 300px;
+        }
+
+        .percentage_change_24h {
+            width: 100px;
+        }
+
+        .total_volume {
+            width: 350px;
+        }
+
+        .market_cap {
+            width: 350px;
+        }
+    }
+}
