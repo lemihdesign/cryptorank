@@ -12,64 +12,6 @@ let rows = 10;
 let previousPrice;
 let updatedPrice;
 
-/* function descending(a, b) {
-    return a.price < b.price ? 1 : -1;
-}
-
-function ascending(a, b) {
-    return a.price > b.price ? 1 : -1;
-} */
-
-/* function reposition() {
-    let height = $("#body .crypto").height();
-    let y = height;
-
-    for(let i=0; i<cryptocurrencies.length; i++) {
-        cryptocurrencies[i].$item.css("top", y + "px");
-        y += height;
-    }
-} */
-
-/* function resetReposition() {
-    const y = 50;
-    for(let i=0; i<cryptocurrencies.length; i++) {
-        // cryptocurrencies[i].$item.css("margin-top", y + "px");
-        cryptocurrencies[i].$item.css("position", "static");
-    }
-} */
-
-/* function filterReposition() {
-    const crypto = document.querySelector('.crypto');
-    let height = $("#body .crypto").height();
-    let y = height;
-    
-    for(let i=0; i<cryptocurrencies.length; i++) {
-        cryptocurrencies[i].$item.css("top", y + "px");
-        y += height;
-    } 
-} */
-
-/* function changePositionAbs() {
-    for(let i=0; i<cryptocurrencies.length; i++) {
-        cryptocurrencies[i].$item.css("position", "absolute");
-    }
-} */
-
-
-/* function updateRank(cryptocurrencies) {
-    for(let i=0; i<cryptocurrencies.length; i++) {
-        cryptocurrencies[i].$item.find('.rank').text(i+1);
-    }
-} */
-
-function getRandomScoreIncrease() {
-    return getRandomBetween(10, 20);
-}
-
-function getRandomBetween(min, max) {
-    return Math.floor(Math.random() * max) + min;
-}
-
 function fetchNewData(data, attrName, name) {
     for(let x in data) {
         if((data[x].name == name) == true) {
@@ -198,10 +140,7 @@ function getData() {
         cryptocurrencies[i].$item = $item;
         $currencyList.append($item);
     }
-
-    //cryptocurrencies.sort(descending);
-    //updateRank(cryptocurrencies);
-    //reposition();
+    
     timerID = setInterval("getUpdatedData();", updateInterval);
     dateID = setInterval("changeDate();", updateInterval);
 
